@@ -1,0 +1,35 @@
+<div class="">
+
+  <button mat-raised-button [disabled]="disabled" (click)="openDialog()">
+    PROPOSE PRODUCT
+  </button>
+  <button mat-button matTooltip="Choose at least 3 product">?</button>
+
+  <div class="card-container">
+
+    <mat-card class="example-card" *ngFor="let e of products; let i = index">
+
+      <img mat-card-image [src]="e.src" style="width: 200px; display: inline; margin: auto;">
+
+      <mat-card-header>
+        <mat-card-title>{{e.name}}</mat-card-title>
+        <mat-card-subtitle>{{e.price}} €</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>M: {{ coordonnee[i].male !== null ? coordonnee[i].male : 0 }} %</p>
+        <p>F: {{coordonnee[i].female !== null ? coordonnee[i].female : 0}} %</p>
+        <p>GU: {{coordonnee[i].groupUnder25 !== null ? coordonnee[i].groupUnder25 : 0}} %</p>
+        <p>GO: {{coordonnee[i].groupOver25 !== null ? coordonnee[i].groupOver25 : 0}} %</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-checkbox class="" [(ngModel)]="checkedBox[i]">Checked</mat-checkbox>
+        <button mat-raised-button class="custom-button" color="primary" *ngIf="produitFlottant[i]"
+          (click)="openDialogEdit(i)">Edit</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+
+</div>
